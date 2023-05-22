@@ -70,5 +70,5 @@ router.get("/fetch-pdf", (req, res) => {
     console.log(err);
   }
 });
-// router.use(express.static())
+router.use(express.static('../client/build'))
 module.exports = router;
