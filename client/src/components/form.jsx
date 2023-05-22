@@ -56,7 +56,8 @@ const initialState = {
   hobbies: "",
 };
 const form = () => {
-    const [page, setPage] = useState(0);
+  const [formData,setFormData]=useState(initialState);
+  const [page, setPage] = useState(0);
   const FormTitle = [
     "Personal Details",
     "Education",
@@ -65,9 +66,8 @@ const form = () => {
     "Extra Circular Activities",
   ];
   const PageDisplay = () => {
-    
     if (page === 0) {
-      return <Personal />;
+      return <Personal formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
       return <Education />;
     } else if (page === 2) {
@@ -78,39 +78,41 @@ const form = () => {
       return <Extras />;
     }
   };
-  const [formData, setFormData] = useState(initialState);
+
   return (
     <>
       {/* <h1>Form</h1> */}
       <div>
         {/* <h2 className="text-center text-2xl text-green-400 font-serif"> {}</h2> */}
-        <p className="mt-2 text-lg leading-8 text-gray-600 text">
-        {FormTitle[page]}
+        <p className="mt-2 text-2xl leading-8 text-sky-400 text-center font-bold">
+          {FormTitle[page]}
         </p>
         <PageDisplay />
         <div className="text-center">
-        <div className="mt-10">
-          
-     
-        <button className="mr-6"
-          disabled={page === 0}
-          onClick={() => {
-            setPage((currPage) => currPage - 1);
-          }}
-        >
-          Prev
-        </button>
-        
-        <button
+          <div className="mt-10 flex justify-center items-center">
+            <button
 
-        disabled={page === 4}
-          onClick={() => {
-            
-            setPage((currPage) => currPage + 1);
-          }}>Next</button>
-             </div>
+
+            className="block mr-6 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              disabled={page === 0}
+              onClick={() => {
+                setPage((currPage) => currPage - 1);
+              }}
+            >
+              Prev
+            </button>
+
+            <button
+            className="block mr-6 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              disabled={page === 4}
+              onClick={() => {
+                setPage((currPage) => currPage + 1);
+              }}
+            >
+              Next
+            </button>
+          </div>
         </div>
-        
       </div>
     </>
   );
