@@ -22,7 +22,7 @@ function App() {
         />
       </div>
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-extrabold tracking-tight text-yellow-300 sm:text-4xl">Lets Build Resume</h2>
+        <h2 className="text-3xl font-extrabold tracking-tight text-yellow-400 sm:text-4xl">Lets Build Resume</h2>
 
       </div>
 

@@ -69,11 +69,11 @@ const form = () => {
     if (page === 0) {
       return <Personal formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
-      return <Education />;
+      return <Education formData={formData} setFormData={setFormData}/>;
     } else if (page === 2) {
-      return <Experience />;
+      return <Experience formData={formData} setFormData={setFormData}/>;
     } else if (page === 3) {
-      return <Project />;
+      return <Project formData={formData} setFormData={setFormData}/>;
     } else {
       return <Extras />;
     }
@@ -84,7 +84,7 @@ const form = () => {
       {/* <h1>Form</h1> */}
       <div>
         {/* <h2 className="text-center text-2xl text-green-400 font-serif"> {}</h2> */}
-        <p className="mt-2 text-2xl leading-8 text-sky-400 text-center font-bold">
+        <p className="mt-2 text-2xl text-#11103e leading-8 text-sky-400 text-center font-bold">
           {FormTitle[page]}
         </p>
         <PageDisplay />

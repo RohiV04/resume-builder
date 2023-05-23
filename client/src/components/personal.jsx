@@ -28,7 +28,11 @@ const personal = ({ formData, setFormData }) => {
                 type="text"
                 name="name"
                 id="name"
-                autoComplete="organization"
+                value={formData.name}
+                onChange={(e)=>{
+                  setFormData({...formData,name:e.target.value})
+                }}
+                autoComplete="name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -45,6 +49,10 @@ const personal = ({ formData, setFormData }) => {
                 type="email"
                 name="email"
                 id="email"
+                value={formData.email}
+                onChange={(e)=>{
+                  setFormData({...formData,email:e.target.value})
+                }}
                 autoComplete="email"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
@@ -64,10 +72,14 @@ const personal = ({ formData, setFormData }) => {
                 </label>
               </div>
               <input
-                type="number"
+                type="tel"
                 name="phone-number"
                 id="phone-number"
                 autoComplete="tel"
+                value={formData.phone}
+                onChange={(e)=>{
+                  setFormData({...formData,phone:e.target.value})
+                }}
                 className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -84,7 +96,11 @@ const personal = ({ formData, setFormData }) => {
                 type="text"
                 name="linkedin"
                 id="linkedin"
-                autoComplete="given-name"
+                autoComplete="linkedin"
+                value={formData.linkedin}
+                onChange={(e)=>{
+                  setFormData({...formData,linkedin:e.target.value})
+                }}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -101,7 +117,11 @@ const personal = ({ formData, setFormData }) => {
                 type="text"
                 name="github"
                 id="github"
-                autoComplete="family-name"
+                autoComplete="github"
+                value={formData.github}
+                onChange={(e)=>{
+                  setFormData({...formData,github:e.target.value})
+                }}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -117,6 +137,10 @@ const personal = ({ formData, setFormData }) => {
               <textarea
                 name="skills"
                 id="skills"
+                value={formData.skills[0]}
+                onChange={(e)=>{
+                  setFormData({...formData,skills:e.target.value})
+                }}
                 rows={3}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 defaultValue={""}
