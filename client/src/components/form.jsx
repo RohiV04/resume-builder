@@ -75,7 +75,7 @@ const form = () => {
     } else if (page === 3) {
       return <Project formData={formData} setFormData={setFormData}/>;
     } else {
-      return <Extras />;
+      return <Extras formData={formData} setFormData={setFormData} />;
     }
   };
 

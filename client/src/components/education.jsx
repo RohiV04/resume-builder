@@ -66,7 +66,7 @@ const education = ({ formData, setFormData }) => {
               htmlFor="edu1_year"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
-              Year
+              Study Year
             </label>
             <div className="mt-2.5">
               <input
@@ -87,7 +87,7 @@ const education = ({ formData, setFormData }) => {
               htmlFor="edu1_score"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
-              Score
+              Percentage / CGPA
             </label>
             <div className="mt-2.5">
               <input
@@ -115,7 +115,7 @@ const education = ({ formData, setFormData }) => {
                 type="edu2_qualification"
                 name="edu2_qualification"
                 id="edu2_qualification"
-                value={formData.education[0].edu2_qualification}
+                value={formData.education[1].edu2_qualification}
                 onChange={(e) => {
                   setFormData({
                     ...formData,
@@ -141,7 +141,7 @@ const education = ({ formData, setFormData }) => {
                 name="edu2_school"
                 id="edu2_school"
                 autoComplete="edu2_school"
-                value={formData.education[0].edu2_school}
+                value={formData.education[1].edu2_school}
                 onChange={(e)=>{
                   setFormData({...formData,edu2_school:e.target.value})
                 }}
@@ -154,7 +154,7 @@ const education = ({ formData, setFormData }) => {
               htmlFor="edu2_year"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
-              Year
+              Study Year
             </label>
             <div className="mt-2.5">
               <input
@@ -162,7 +162,7 @@ const education = ({ formData, setFormData }) => {
                 name="edu2_year"
                 id="edu2_year"
                 autoComplete="edu2_year"
-                value={formData.education[0].edu2_year}
+                value={formData.education[1].edu2_year}
                 onChange={(e)=>{
                   setFormData({...formData,edu2_year:e.target.value})
                 }}
@@ -175,7 +175,7 @@ const education = ({ formData, setFormData }) => {
               htmlFor="edu2_score"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
-             Score
+            Percentage / CGPA
             </label>
             <div className="mt-2.5">
               <input
@@ -183,7 +183,7 @@ const education = ({ formData, setFormData }) => {
                 name="edu2_score"
                 id="edu2_score"
                 autoComplete="edu2_score"
-                value={formData.education[0].edu2_score}
+                value={formData.education[1].edu2_score}
                 onChange={(e)=>{
                   setFormData({...formData,edu2_score:e.target.value})
                 }}

@@ -114,7 +114,7 @@ const experience = ({ formData, setFormData }) => {
                 name="exp2_org"
                 id="exp2_org"
                 autoComplete="exp2_org"
-                value={formData.experience[0].exp2_org}
+                value={formData.experience[1].exp2_org}
                 onChange={(e)=>{
                   setFormData({...formData,exp2_org:e.target.value})
                 }}
@@ -135,7 +135,7 @@ const experience = ({ formData, setFormData }) => {
                 name="exp2_pos"
                 id="exp2_pos"
                 autoComplete="exp2_pos"
-                value={formData.experience[0].exp2_pos}
+                value={formData.experience[1].exp2_pos}
                 onChange={(e)=>{
                   setFormData({...formData,exp2_pos:e.target.value})
                 }}
@@ -156,7 +156,7 @@ const experience = ({ formData, setFormData }) => {
                 name="exp2_dur"
                 id="exp2_dur"
                 autoComplete="exp2_dur"
-                value={formData.experience[0].exp2_dur}
+                value={formData.experience[1].exp2_dur}
                 onChange={(e)=>{
                   setFormData({...formData,exp2_dur:e.target.value})
                 }}
@@ -169,13 +169,13 @@ const experience = ({ formData, setFormData }) => {
               htmlFor="exp2_desc"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
-              Skills
+              Description
             </label>
             <div className="mt-2.5">
               <textarea
                 name="exp2_desc"
                 id="exp2_desc"
-                value={formData.experience[0].exp2_desc}
+                value={formData.experience[1].exp2_desc}
                 onChange={(e)=>{
                   setFormData({...formData,exp2_desc:e.target.value})
                 }}
