@@ -60,7 +60,7 @@ module.exports = ({
           </div>
           <div class="col-lg-8 row mx-auto">
             <p class="lead"> ${skills}</p>
-          </div>
+          </div> 
 
           <div class="col-lg-8 mx-auto bg-light">
             <h3><b>Experience</b></h3>

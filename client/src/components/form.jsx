@@ -5,13 +5,14 @@ import Personal from "./personal";
 import Project from "./projects";
 import Experience from "./experience";
 import Extras from "./extras";
+
 const initialState = {
   name: "",
   email: "",
   phone: "",
   linkedin: "",
   github: "",
-  skills: [""],
+  skills: [],
   experience: [
     {
       exp1_org: "",
