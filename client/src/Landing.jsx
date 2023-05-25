@@ -1056,7 +1056,7 @@ const Landing = () => {
                         <div className="testimonial-header">
                           <img
                             className="mb-16"
-                            src="dist/images/testimonial-01.png"
+                            src="src/dist/images/testimonial-01.png"
                             alt="Testimonial"
                           />
                         </div>
@@ -1080,7 +1080,7 @@ const Landing = () => {
                         <div className="testimonial-header">
                           <img
                             className="mb-16"
-                            src="dist/images/testimonial-02.png"
+                            src="src/dist/images/testimonial-02.png"
                             alt="Testimonial"
                           />
                         </div>
@@ -1104,7 +1104,7 @@ const Landing = () => {
                         <div className="testimonial-header">
                           <img
                             className="mb-16"
-                            src="dist/images/testimonial-03.png"
+                            src="src/dist/images/testimonial-03.png"
                             alt="Testimonial"
                           />
                         </div>
