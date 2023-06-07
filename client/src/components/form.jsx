@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { saveAs } from "file-saver";
 import Education from "./education";
 import Personal from "./personal";
 import Project from "./projects";
@@ -12,7 +13,7 @@ const initialState = {
   phone: "",
   linkedin: "",
   github: "",
-  skills: [],
+  skills: "",
   experience: [
     {
       exp1_org: "",
@@ -56,9 +57,11 @@ const initialState = {
   languages: "",
   hobbies: "",
 };
-const form = () => {
-  const [formData,setFormData]=useState(initialState);
+
+const Form = () => {
+  const [formData, setFormData] = useState(initialState);
   const [page, setPage] = useState(0);
+  const [success, setSuccess] = useState(false);
   const FormTitle = [
     "Personal Details",
     "Education",
@@ -66,25 +69,50 @@ const form = () => {
     "Project",
     "Extra Circular Activities",
   ];
+
   const PageDisplay = () => {
     if (page === 0) {
       return <Personal formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
-      return <Education formData={formData} setFormData={setFormData}/>;
+      return <Education formData={formData} setFormData={setFormData} />;
     } else if (page === 2) {
-      return <Experience formData={formData} setFormData={setFormData}/>;
+      return <Experience formData={formData} setFormData={setFormData} />;
     } else if (page === 3) {
-      return <Project formData={formData} setFormData={setFormData}/>;
+      return <Project formData={formData} setFormData={setFormData} />;
     } else {
       return <Extras formData={formData} setFormData={setFormData} />;
     }
   };
 
+  const handleSubmit = () => {
+    console.log("Form submitted");
+    // Make a POST request to the "/create-pdf" endpoint
+    axios
+      .post("http://localhost:8000/resumes", formData)
+      .then(console.log("Stored"))
+      .catch(console.log("err"));
+    axios
+      .post("http://localhost:8000/create-pdf", formData)
+      .then(() =>
+        axios.get("http://localhost:8000/fetch-pdf", {
+          responseType: "blob",
+        })
+      )
+      .then((res) => {
+        const pdfBlob = new Blob([res.data], {
+          type: "application/pdf",
+        });
+        setSuccess(res.status === 200);
+        saveAs(pdfBlob, "Resume.pdf");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
-      {/* <h1>Form</h1> */}
       <div>
-        {/* <h2 className="text-center text-2xl text-green-400 font-serif"> {}</h2> */}
         <p className="mt-2 text-2xl text-#11103e leading-8 text-sky-400 text-center font-bold">
           {FormTitle[page]}
         </p>
@@ -92,9 +120,7 @@ const form = () => {
         <div className="text-center">
           <div className="mt-10 flex justify-center items-center">
             <button
-
-
-            className="block mr-6 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="block mr-6 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               disabled={page === 0}
               onClick={() => {
                 setPage((currPage) => currPage - 1);
@@ -104,13 +130,18 @@ const form = () => {
             </button>
 
             <button
-            className="block mr-6 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              disabled={page === 4}
+              className="block mr-6 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              disabled={page === 5}
               onClick={() => {
-                setPage((currPage) => currPage + 1);
+                if (page === FormTitle.length - 1) {
+                  // Last page, submit the form
+                  handleSubmit();
+                } else {
+                  setPage((currPage) => currPage + 1);
+                }
               }}
             >
-              Next
+              {page === FormTitle.length - 1 ? "Download " : "Next"}
             </button>
           </div>
         </div>
@@ -119,4 +150,4 @@ const form = () => {
   );
 };
 
-export default form;
+export default Form;

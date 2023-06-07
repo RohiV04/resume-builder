@@ -10,7 +10,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-
           <Route path="/Resume" element={<Resume />} />
         </Routes>
       </BrowserRouter>

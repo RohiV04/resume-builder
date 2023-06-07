@@ -1022,7 +1022,7 @@ const Landing = () => {
                 width={48}
                 height={48}
                 viewBox="0 0 48 48"
-                mlns="http://www.w3.org/2000/svg"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <defs>
                   <linearGradient
