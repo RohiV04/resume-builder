@@ -5,6 +5,7 @@ const app=express();
 const cors=require('cors');
 
 const router=require('./routers/index');
+const auth=require('./routers/auth');
 const uri="mongodb+srv://Rohi:bvwljVhCqz3iJbAF@cluster0.eqsiiyv.mongodb.net/?retryWrites=true&w=majority";
 const port=process.env.PORT || 8000
 mongoose.connect(uri);
@@ -14,4 +15,5 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use('/',router);
-app.listen(port,console.log(`server is running on http:localhost:${port}`));
+app.use('/auth',auth);
+app.listen(port,console.log(`server is running on http://localhost:${port}`));

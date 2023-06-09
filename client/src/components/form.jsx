@@ -87,10 +87,10 @@ const Form = () => {
   const handleSubmit = () => {
     console.log("Form submitted");
     // Make a POST request to the "/create-pdf" endpoint
-    axios
-      .post("http://localhost:8000/resumes", formData)
-      .then(console.log("Stored"))
-      .catch(console.log("err"));
+    // axios
+    //   .post("http://localhost:8000/resumes", formData)
+    //   .then(console.log("Stored"))
+    //   .catch(console.log("err"));
     axios
       .post("http://localhost:8000/create-pdf", formData)
       .then(() =>
