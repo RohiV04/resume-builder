@@ -5,7 +5,7 @@ const pdf = require("html-pdf");
 const pdfSample = require("../pdf-sample/index.js");
 // const resume = require("../models/index");
 router.get("/msg", (req, res) => {
-  res.send("hello world");
+  res.json({msg:"hello world"});
 });
 router.post("/create-pdf", async (req, res) => {
   try {

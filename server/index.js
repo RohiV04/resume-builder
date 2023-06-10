@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.get('/',(req,res)=>{
     res.send("This is Resume Backend");
-})
+});
 app.use('/',router);
 app.use('/auth',auth);
 app.listen(port,console.log(`server is running on http://localhost:${port}`));

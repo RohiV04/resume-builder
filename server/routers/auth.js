@@ -36,7 +36,15 @@ router.post('/signup', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
+router.get('/users',(req,res)=>{
+  try{
+    const user=User.find();
+    res.status(200).json(user);
+  }catch(err){
+res.status(500).send(err);
+console.log(err);
+  }
+})
 // Sign-in route
 router.post('/signin', async (req, res) => {
   try {
