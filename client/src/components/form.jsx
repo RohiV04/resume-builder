@@ -83,7 +83,7 @@ const Form = () => {
       return <Extras formData={formData} setFormData={setFormData} />;
     }
   };
-const baseurl="https://resume-backend.adaptable.app";
+  const baseurl = "https://resume-backend.adaptable.app";
   const handleSubmit = () => {
     console.log("Form submitted");
     // Make a POST request to the "/create-pdf" endpoint
@@ -92,28 +92,28 @@ const baseurl="https://resume-backend.adaptable.app";
     //   .then(console.log("Stored"))
     //   .catch(console.log("err"));
     axios
-    .post(baseurl + "/create-pdf", formData, { responseType: "blob" }) // Set responseType to "blob" for binary data
-    .then((response) => {
-      const pdfBlob = new Blob([response.data], { type: "application/pdf" });
-  
-      // Check if the browser supports the "saveAs" function
-      if (typeof window !== "undefined" && window.saveAs) {
-        // Use the "saveAs" function from the "file-saver" library
-        window.saveAs(pdfBlob, "Resume.pdf");
-      } else {
-        // Fallback method for browsers that do not support "saveAs"
-        const downloadLink = document.createElement("a");
-        downloadLink.href = URL.createObjectURL(pdfBlob);
-        downloadLink.download = "Resume.pdf";
-        downloadLink.click();
-      }
-  
-      setSuccess(true);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }
+      .post(baseurl + "/create-pdf", formData, { responseType: "arraybuffer" }) // Set responseType to "arraybuffer" for binary data
+      .then((response) => {
+        const pdfBlob = new Blob([response.data], { type: "application/pdf" });
+
+        // Check if the browser supports the "saveAs" function
+        if (typeof window !== "undefined" && window.saveAs) {
+          // Use the "saveAs" function from the "file-saver" library
+          saveAs(pdfBlob, "Resume.pdf");
+        } else {
+          // Fallback method for browsers that do not support "saveAs"
+          const downloadLink = document.createElement("a");
+          downloadLink.href = URL.createObjectURL(pdfBlob);
+          downloadLink.download = "Resume.pdf";
+          downloadLink.click();
+        }
+
+        setSuccess(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
