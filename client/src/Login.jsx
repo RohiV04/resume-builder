@@ -17,6 +17,7 @@ const LoginForm = () => {
     try {
       const response = await axios.post(baseurl+'/auth/signin', formData);
       console.log(response.data);
+      console.log("sign in success")
       // Reset the form
       setFormData({ email: '', password: '' });
     } catch (error) {

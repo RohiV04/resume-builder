@@ -1,11 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { PaperClipIcon } from "@heroicons/react/20/solid";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { Switch } from "@headlessui/react";
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+
+
 const education = ({ formData, setFormData }) => {
   return (
     <div>
