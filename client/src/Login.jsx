@@ -13,8 +13,9 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const baseurl="https://resume-backend.adaptable.app";
     try {
-      const response = await axios.post('http://localhost:8000/auth/signin', formData);
+      const response = await axios.post(baseurl+'/auth/signin', formData);
       console.log(response.data);
       // Reset the form
       setFormData({ email: '', password: '' });

@@ -83,7 +83,7 @@ const Form = () => {
       return <Extras formData={formData} setFormData={setFormData} />;
     }
   };
-
+const baseurl="https://resume-backend.adaptable.app";
   const handleSubmit = () => {
     console.log("Form submitted");
     // Make a POST request to the "/create-pdf" endpoint
@@ -92,9 +92,9 @@ const Form = () => {
     //   .then(console.log("Stored"))
     //   .catch(console.log("err"));
     axios
-      .post("http://localhost:8000/create-pdf", formData)
+      .post(baseurl+"/create-pdf", formData)
       .then(() =>
-        axios.get("http://localhost:8000/fetch-pdf", {
+        axios.get(baseurl+"/fetch-pdf", {
           responseType: "blob",
         })
       )
