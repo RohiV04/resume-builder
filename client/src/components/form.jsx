@@ -92,27 +92,23 @@ const baseurl="https://resume-backend.adaptable.app";
     //   .then(console.log("Stored"))
     //   .catch(console.log("err"));
     axios
-    .post(baseurl + "/create-pdf", formData, { responseType: "blob" }) // Set responseType to "blob" for binary data
+    .post(baseurl + "/create-pdf", formData, { responseType: "arraybuffer" })
     .then((response) => {
       const pdfBlob = new Blob([response.data], { type: "application/pdf" });
-  
-      // Check if the browser supports the "saveAs" function
-      if (typeof window !== "undefined" && window.saveAs) {
-        // Use the "saveAs" function from the "file-saver" library
-        window.saveAs(pdfBlob, "Resume.pdf");
-      } else {
-        // Fallback method for browsers that do not support "saveAs"
-        const downloadLink = document.createElement("a");
-        downloadLink.href = URL.createObjectURL(pdfBlob);
-        downloadLink.download = "Resume.pdf";
-        downloadLink.click();
-      }
-  
+      const url = URL.createObjectURL(pdfBlob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "Resume.pdf");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
       setSuccess(true);
     })
     .catch((error) => {
       console.log(error);
     });
+  
   
 
   return (
