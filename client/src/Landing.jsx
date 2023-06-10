@@ -163,7 +163,7 @@ const Landing = () => {
                     </div>
                     <div className="control">
                       <Link
-                        to="/Resume"
+                        to="/resume"
                         className="button button-primary button-block"
                       >
                         Early access
