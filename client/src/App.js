@@ -3,7 +3,7 @@ import Education from "./components/education";
 import Experiences from "./components/Experiences";
 import PersonalDetails from "./components/PersonalDetails";
 import Project from "./components/Project";
-import Extras from "./components/Extras";
+import Extras from "./components/extras";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import Success from "./components/Success";
@@ -107,9 +107,9 @@ const App = () => {
           onClick={() => {
             if (page === FormTitle.length - 1) {
               axios
-                .post("http://localhost:7500/create-pdf", formData)
+                .post("https://resume-backend.adaptable.app/create-pdf", formData)
                 .then(() =>
-                  axios.get("http://localhost:7500/fetch-pdf", {
+                  axios.get("https://resume-backend.adaptable.app/fetch-pdf", {
                     responseType: "blob",
                   })
                 )
