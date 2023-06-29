@@ -1,4 +1,4 @@
-// import React, { useState } from "react";
+ import React, { useState } from "react";
 
 const Personal = ({ formData, setFormData }) => {
   const handleChange = (e) => {
