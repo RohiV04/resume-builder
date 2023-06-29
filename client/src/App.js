@@ -73,7 +73,7 @@ const App = () => {
     <div>
     
       <div className="d-flex justify-content-center">
-        <h1 className="text-center">{FormTitle[page]}</h1>
+        <h1 className="text-6xl text-fuchsia-800 font-semibold font-sans ">{FormTitle[page]}</h1>
       </div>
       <div className="progressbar">
         <div
@@ -107,9 +107,9 @@ const App = () => {
           onClick={() => {
             if (page === FormTitle.length - 1) {
               axios
-                .post("http://localhost:4000/create-pdf", formData)
+                .post("http://localhost:7500/create-pdf", formData)
                 .then(() =>
-                  axios.get("http://localhost:4000/fetch-pdf", {
+                  axios.get("http://localhost:7500/fetch-pdf", {
                     responseType: "blob",
                   })
                 )

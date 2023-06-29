@@ -25,7 +25,9 @@ app.post("/create-pdf", (req, res) => {
 app.get("/fetch-pdf", (req, res) => {
   res.sendFile(`${__dirname}/Resume.pdf`);
 });
-
+app.get('/',(req,res)=>{
+  res.send("Welcome");
+})
 app.use(express.static("../client/build"));
 
 
