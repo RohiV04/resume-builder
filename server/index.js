@@ -1,22 +1,33 @@
-const express=require('express');
-const mongoose=require('mongoose');
+const express = require("express");
+const cors = require("cors");
+const pdf = require("html-pdf");
+const pdfSample = require("./pdf-sample");
 
-const app=express();
-const cors=require('cors');
+const app = express();
 
-const router=require('./routers/index');
-const auth=require('./routers/auth');
-const uri="mongodb+srv://Rohi:bvwljVhCqz3iJbAF@cluster0.eqsiiyv.mongodb.net/?retryWrites=true&w=majority";
-const port=process.env.PORT || 8000
-mongoose.connect(uri);
-const con =mongoose.connection;
-con.once("open",()=>{console.log("connected")});
+const port = 4000;
+
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
-app.get('/',(req,res)=>{
-    res.send("This is Resume Backend");
+app.use(express.urlencoded({ extended: true }));
+
+app.post("/create-pdf", (req, res) => {
+  pdf.create(pdfSample(req.body), {}).toFile("Resume.pdf", (err) => {
+    if (err) {
+      res.send(Promise.reject());
+      console.log(err);
+    }
+    res.send(Promise.resolve());
+    console.log("Success");
+  });
 });
-app.use('/',router);
-app.use('/auth',auth);
-app.listen(port,console.log(`server is running on http://localhost:${port}`));
+
+app.get("/fetch-pdf", (req, res) => {
+  res.sendFile(`${__dirname}/Resume.pdf`);
+});
+
+app.use(express.static("../client/build"));
+
+app.listen(port, () => {
+  console.log(`Server is running on port=${port}`);
+});

@@ -1,157 +1,136 @@
 import React, { useState } from "react";
+import Education from "./Education";
+import Experiences from "./Experiences";
+import PersonalDetails from "./PersonalDetails";
+import Project from "./Project";
+import Extras from "./Extras";
 import axios from "axios";
 import { saveAs } from "file-saver";
-import Education from "./education";
-import Personal from "./personal";
-import Project from "./projects";
-import Experience from "./experience";
-import Extras from "./extras";
-
-const initialState = {
-  name: "",
-  email: "",
-  phone: "",
-  linkedin: "",
-  github: "",
-  skills: "",
-  experience: [
-    {
-      exp1_org: "",
-      exp1_pos: "",
-      exp1_desc: "",
-      exp1_dur: "",
-    },
-    {
-      exp2_org: "",
-      exp2_pos: "",
-      exp2_desc: "",
-      exp2_dur: "",
-    },
-  ],
-  education: [
-    {
-      edu1_school: "",
-      edu1_year: "",
-      edu1_qualification: "",
-      edu1_score: "",
-    },
-    {
-      edu2_school: "",
-      edu2_year: "",
-      edu2_qualification: "",
-      edu2_score: "",
-    },
-  ],
-  project: [
-    {
-      proj1_title: "",
-      proj1_link: "",
-      proj1_desc: "",
-    },
-    {
-      proj2_title: "",
-      proj2_link: "",
-      proj2_desc: "",
-    },
-  ],
-  languages: "",
-  hobbies: "",
-};
-
+import Success from "./Success";
 const Form = () => {
-  const [formData, setFormData] = useState(initialState);
-  const [page, setPage] = useState(0);
   const [success, setSuccess] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    linkedin: "",
+    github: "",
+    skills: "",
+
+    exp1_org: "",
+    exp1_pos: "",
+    exp1_desc: "",
+    exp1_dur: "",
+    exp2_org: "",
+    exp2_pos: "",
+    exp2_des: "",
+    exp2_dur: "",
+
+    proj1_title: "",
+    proj1_link: "",
+    proj1_desc: "",
+    proj2_title: "",
+    proj2_link: "",
+    proj2_desc: "",
+
+    edu1_school: "",
+    edu1_year: "",
+    edu1_qualification: "",
+    edu1_desc: "",
+    edu2_school: "",
+    edu2_year: "",
+    edu2_qualification: "",
+    edu2_desc: "",
+
+    extra_1: "",
+    extra_2: "",
+  });
+
+  const [page, setPage] = useState(0);
   const FormTitle = [
     "Personal Details",
     "Education",
     "Experience",
-    "Project",
-    "Extra Circular Activities",
+    "Projects",
+    "Extras",
   ];
 
   const PageDisplay = () => {
     if (page === 0) {
-      return <Personal formData={formData} setFormData={setFormData} />;
+      return <PersonalDetails formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
       return <Education formData={formData} setFormData={setFormData} />;
     } else if (page === 2) {
-      return <Experience formData={formData} setFormData={setFormData} />;
+      return <Experiences formData={formData} setFormData={setFormData} />;
     } else if (page === 3) {
       return <Project formData={formData} setFormData={setFormData} />;
     } else {
       return <Extras formData={formData} setFormData={setFormData} />;
     }
   };
-  const baseurl = "https://resume-backend.adaptable.app";
-  const handleSubmit = () => {
-    console.log("Form submitted");
-    // Make a POST request to the "/create-pdf" endpoint
-    // axios
-    //   .post("http://localhost:8000/resumes", formData)
-    //   .then(console.log("Stored"))
-    //   .catch(console.log("err"));
-    axios
-      .post(baseurl + "/create-pdf", formData, { responseType: "arraybuffer" }) // Set responseType to "arraybuffer" for binary data
-      .then((response) => {
-        const pdfBlob = new Blob([response.data], { type: "application/pdf" });
-
-        // Check if the browser supports the "saveAs" function
-        if (typeof window !== "undefined" && window.saveAs) {
-          // Use the "saveAs" function from the "file-saver" library
-          saveAs(pdfBlob, "Resume.pdf");
-        } else {
-          // Fallback method for browsers that do not support "saveAs"
-          const downloadLink = document.createElement("a");
-          downloadLink.href = URL.createObjectURL(pdfBlob);
-          downloadLink.download = "Resume.pdf";
-          downloadLink.click();
-        }
-
-        setSuccess(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   return (
-    <>
-      <div>
-        <p className="mt-2 text-2xl text-#11103e leading-8 text-sky-400 text-center font-bold">
-          {FormTitle[page]}
-        </p>
-        <PageDisplay />
-        <div className="text-center">
-          <div className="mt-10 flex justify-center items-center">
-            <button
-              className="block mr-6 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              disabled={page === 0}
-              onClick={() => {
-                setPage((currPage) => currPage - 1);
-              }}
-            >
-              Prev
-            </button>
-
-            <button
-              className="block mr-6 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              disabled={page === 5}
-              onClick={() => {
-                if (page === FormTitle.length - 1) {
-                  // Last page, submit the form
-                  handleSubmit();
-                } else {
-                  setPage((currPage) => currPage + 1);
-                }
-              }}
-            >
-              {page === FormTitle.length - 1 ? "Download " : "Next"}
-            </button>
-          </div>
-        </div>
+    <div>
+    
+      <div className="d-flex justify-content-center">
+        <h1 className="text-center">{FormTitle[page]}</h1>
       </div>
-    </>
+      <div className="progressbar">
+        <div
+          style={{
+            width:
+              page === 0
+                ? "20%"
+                : page === 1
+                ? "40%"
+                : page === 2
+                ? "60%"
+                : page === 3
+                ? "80%"
+                : "100%",
+          }}
+        ></div>
+      </div>
+      <div>{PageDisplay()}</div>
+      <div className="d-flex justify-content-center gap-3 py-5">
+        <button
+          className="btn btn-dark"
+          disabled={page === 0}
+          onClick={() => {
+            setPage((currPage) => currPage - 1);
+          }}
+        >
+          Prev
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            if (page === FormTitle.length - 1) {
+              axios
+                .post("http://localhost:4000/create-pdf", formData)
+                .then(() =>
+                  axios.get("http://localhost:4000/fetch-pdf", {
+                    responseType: "blob",
+                  })
+                )
+                .then((res) => {
+                  const pdfBlob = new Blob([res.data], {
+                    type: "application/pdf",
+                  });
+                  setSuccess(true && res.status === 200);
+                  saveAs(pdfBlob, "Resume.pdf");
+                });
+            } else {
+              setPage((currPage) => currPage + 1);
+            }
+          }}
+        >
+          {page === FormTitle.length - 1 ? "Download Pdf" : "Next"}
+        </button>
+      </div>
+      {success && <Success />}
+      
+    </div>
   );
 };
 
