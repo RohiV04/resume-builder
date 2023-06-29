@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Education from "./components/Education";
+import Education from "./components/education";
 import Experiences from "./components/Experiences";
 import PersonalDetails from "./components/PersonalDetails";
 import Project from "./components/Project";
