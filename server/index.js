@@ -5,7 +5,7 @@ const pdfSample = require("./pdf-sample");
 
 const app = express();
 
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 7500;
 
 app.use(cors());
 app.use(express.json());
@@ -28,8 +28,8 @@ app.get("/fetch-pdf", (req, res) => {
 
 app.use(express.static("../client/build"));
 
-app.listen(port, () => {
+
   app.listen(port, () => {
     console.log(`server is running on port:${port}`);
   });
-});
+
