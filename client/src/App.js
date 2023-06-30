@@ -106,6 +106,8 @@ const App = () => {
           className="btn btn-primary"
           onClick={() => {
             if (page === FormTitle.length - 1) {
+              axios.post("https://resume-backend.adaptable.app/store", formData)
+              .then(()=>{console.log("Stored In DataBase")})
               axios
                 .post("https://resume-backend.adaptable.app/create-pdf", formData)
                 .then(() =>
