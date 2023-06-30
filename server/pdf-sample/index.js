@@ -22,11 +22,11 @@ module.exports = ({
   edu1_school,
   edu1_year,
   edu1_qualification,
-  edu1_desc,
+  edu1_score,
   edu2_school,
   edu2_year,
   edu2_qualification,
-  edu2_desc,
+  edu2_score,
   extra_1,
   extra_2,
 }) => {
@@ -115,11 +115,11 @@ module.exports = ({
             </div>
             <div class="col-lg-8 mx-auto">
                   <p class="lead"><b>${edu1_school}</b> (${edu1_qualification}, ${edu1_year})</p>
-                  <p class="mt-0">${edu1_desc}</p>
+                  <p class="mt-0">${edu1_score}</p>
             </div>
             <div class="col-lg-8 mx-auto">
                   <p class="lead"><b>${edu2_school}</b> (${edu2_qualification}, ${edu2_year})</p>
-                  <p class="mt-0">${edu2_desc}</p>
+                  <p class="mt-0">${edu2_score}</p>
             </div>
     
             <div class="col-lg-8 mx-auto bg-light">
