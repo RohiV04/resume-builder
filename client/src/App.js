@@ -1,139 +1,20 @@
-import React, { useState } from "react";
-import Education from "./components/education";
-import Experiences from "./components/Experiences";
-import PersonalDetails from "./components/PersonalDetails";
-import Project from "./components/Project";
-import Extras from "./components/extras";
-import axios from "axios";
-import { saveAs } from "file-saver";
-import Success from "./components/Success";
-const App = () => {
-  const [success, setSuccess] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    linkedin: "",
-    github: "",
-    skills: "",
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./Landing";
+import Resume from "./Resume";
 
-    exp1_org: "",
-    exp1_pos: "",
-    exp1_desc: "",
-    exp1_dur: "",
-    exp2_org: "",
-    exp2_pos: "",
-    exp2_des: "",
-    exp2_dur: "",
-
-    proj1_title: "",
-    proj1_link: "",
-    proj1_desc: "",
-    proj2_title: "",
-    proj2_link: "",
-    proj2_desc: "",
-
-    edu1_school: "",
-    edu1_year: "",
-    edu1_qualification: "",
-    edu1_desc: "",
-    edu2_school: "",
-    edu2_year: "",
-    edu2_qualification: "",
-    edu2_desc: "",
-
-    extra_1: "",
-    extra_2: "",
-  });
-
-  const [page, setPage] = useState(0);
-  const FormTitle = [
-    "Personal Details",
-    "Education",
-    "Experience",
-    "Projects",
-    "Extras",
-  ];
-
-  const PageDisplay = () => {
-    if (page === 0) {
-      return <PersonalDetails formData={formData} setFormData={setFormData} />;
-    } else if (page === 1) {
-      return <Education formData={formData} setFormData={setFormData} />;
-    } else if (page === 2) {
-      return <Experiences formData={formData} setFormData={setFormData} />;
-    } else if (page === 3) {
-      return <Project formData={formData} setFormData={setFormData} />;
-    } else {
-      return <Extras formData={formData} setFormData={setFormData} />;
-    }
-  };
-
+function App() {
   return (
     <div>
-    
-      <div className="d-flex justify-content-center">
-        <h1 className="text-6xl text-fuchsia-800 font-semibold font-sans ">{FormTitle[page]}</h1>
-      </div>
-      <div className="progressbar">
-        <div
-          style={{
-            width:
-              page === 0
-                ? "20%"
-                : page === 1
-                ? "40%"
-                : page === 2
-                ? "60%"
-                : page === 3
-                ? "80%"
-                : "100%",
-          }}
-        ></div>
-      </div>
-      <div>{PageDisplay()}</div>
-      <div className="d-flex justify-content-center gap-3 py-5">
-        <button
-          className="btn btn-dark"
-          disabled={page === 0}
-          onClick={() => {
-            setPage((currPage) => currPage - 1);
-          }}
-        >
-          Prev
-        </button>
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            if (page === FormTitle.length - 1) {
-              axios.post("https://resume-backend.adaptable.app/store", formData)
-              .then(()=>{console.log("Stored In DataBase")})
-              axios
-                .post("https://resume-backend.adaptable.app/create-pdf", formData)
-                .then(() =>
-                  axios.get("https://resume-backend.adaptable.app/fetch-pdf", {
-                    responseType: "blob",
-                  })
-                )
-                .then((res) => {
-                  const pdfBlob = new Blob([res.data], {
-                    type: "application/pdf",
-                  });
-                  setSuccess(true && res.status === 200);
-                  saveAs(pdfBlob, "Resume.pdf");
-                });
-            } else {
-              setPage((currPage) => currPage + 1);
-            }
-          }}
-        >
-          {page === FormTitle.length - 1 ? "Download Pdf" : "Next"}
-        </button>
-      </div>
-      {success && <Success />}
-      
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />}/>
+            <Route path="/resume" element={<Resume />} />
+            {/* <Route path="*" element={<NoPage />} /> */}
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-};
+}
 
 export default App;

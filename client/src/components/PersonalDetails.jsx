@@ -14,6 +14,7 @@ const Personal = ({ formData, setFormData }) => {
       <div className="mx-auto mt-16 max-w-xl sm:mt-20">
 
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+        {/* <img style={{align:"center"}} src="https://ouch-cdn2.icons8.com/mol4SgLuBWzBbBSGDt0eCsTzzeuNmHmA_7KXKcLlSXE/rs:fit:256:233/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvODYz/LzZiMTA3NzBmLTFh/MTktNDRlYS04OTVh/LWE5ZWFiMmMxMjIx/Yi5zdmc.png"/> */}
           <div className="sm:col-span-2">
             <label
               htmlFor="name"
