@@ -59,10 +59,10 @@ function Landing() {
           <div className="container">
             {/* Icon Blocks */}
             <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto mt-12">
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-12">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-12 ">
                 {/* Icon Block */}
-                <div>
-                  <div className="relative flex justify-center items-center w-12 h-12 bg-white rounded-xl before:absolute before:-inset-px before:-z-[1] before:bg-gradient-to-br before:from-blue-600 before:via-transparent before:to-violet-600 before:rounded-xl dark:bg-slate-900">
+                <div >
+                  <div className="relative flex justify-center items-center w-12 h-12 bg-white rounded-xl  before:absolute before:-inset-px before:-z-[1] before:bg-gradient-to-br before:from-blue-600 before:via-transparent before:to-violet-600 before:rounded-xl dark:bg-white ">
                     <svg
                       className="w-7 h-7 text-slate-900 dark:text-blue-500"
                       xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ function Landing() {
                       <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                     </svg>
                   </div>
-                  <div className="mt-5">
+                  <div className="mt-5 ">
                     <h3 className="text-lg font-semibold text-gray-800 dark:text-white ">
                       Responsive
                     </h3>
@@ -187,7 +187,7 @@ function Landing() {
                     />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
-                    <div className="text-sm font-bold text-gray-800 rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-gray-200">
+                    <div className="text-sm font-bold teblack rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:teblack">
                       Workplace personalities
                     </div>
                   </div>
@@ -209,7 +209,7 @@ function Landing() {
                     />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
-                    <div className="text-sm font-bold text-gray-800 rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-gray-200">
+                    <div className="text-sm font-bold text-black rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-black">
                       Women in engineering
                     </div>
                   </div>
@@ -231,7 +231,7 @@ function Landing() {
                     />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
-                    <div className="text-sm font-bold text-gray-800 rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-gray-200">
+                    <div className="text-sm font-bold text-black rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-black">
                       Pride 2021
                     </div>
                   </div>
@@ -253,7 +253,7 @@ function Landing() {
                     />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
-                    <div className="text-sm font-bold text-gray-800 rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-gray-200">
+                    <div className="text-sm font-bold text-black rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-black">
                       Data at Preline
                     </div>
                   </div>
@@ -275,7 +275,7 @@ function Landing() {
                     />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
-                    <div className="text-sm font-bold text-gray-800 rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-gray-200">
+                    <div className="text-sm font-bold text-dark rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-dark">
                       Empowered management
                     </div>
                   </div>
@@ -438,7 +438,7 @@ function Landing() {
                 <div className="flex h-auto">
                   <div className="flex flex-col bg-white rounded-xl dark:bg-slate-900">
                     <div className="flex-auto p-4 md:p-6">
-                      <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
+                      <p className="text-base italic md:text-lg text-dark dark:text-dark ">
                         " With Preline, we're able to easily track our
                         performance in full detail. It's become an essential
                         tool for us to grow and engage with our audience. "
@@ -454,7 +454,7 @@ function Landing() {
                           />
                         </div>
                         <div className="grow ml-3">
-                          <p className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">
+                          <p className="text-sm sm:text-base font-semibold text-gray-900 dark:text-gray-200">
                             Josh Tyson
                           </p>
                           <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -470,14 +470,14 @@ function Landing() {
                 <div className="flex h-auto">
                   <div className="flex flex-col bg-white rounded-xl dark:bg-slate-900">
                     <div className="flex-auto p-4 md:p-6">
-                      <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
+                      <p className="text-base italic md:text-lg text-dark dark:text-blue-600">
                         " In September, I will be using this theme for 2 years.
                         I went through multiple updates and changes and I'm very
                         glad to see the consistency and effort made by the team.
                         "
                       </p>
                     </div>
-                    <div className="p-4 bg-gray-100 rounded-b-xl md:px-7 dark:bg-slate-700">
+                    <div className="p-4 bg-gray-100 rounded-b-xl md:px-7 dark:bg-slate-900">
                       <div className="flex items-center">
                         <div className="flex-shrink-0">
                           <img
@@ -501,16 +501,16 @@ function Landing() {
                 {/* End Card */}
                 {/* Card */}
                 <div className="flex h-auto">
-                  <div className="flex flex-col bg-white rounded-xl dark:bg-slate-900">
+                  <div className="flex flex-col bg-white rounded-xl  dark:bg-slate-900">
                     <div className="flex-auto p-4 md:p-6">
-                      <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
+                      <p className="text-base italic md:text-lg text-dark dark:text-dark">
                         " Refreshing and Thought provoking design and it changes
                         my view about how I design the websites. Great
                         typography, modern clean white design, nice tones of the
                         color. "
                       </p>
                     </div>
-                    <div className="p-4 bg-gray-100 rounded-b-xl md:px-7 dark:bg-slate-700">
+                    <div className="p-4 bg-gray-100 rounded-b-xl md:px-7 dark:bg-slate-900">
                       <div className="flex items-center">
                         <div className="flex-shrink-0">
                           <img
