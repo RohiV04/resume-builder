@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
-const uri =
-  "mongodb+srv://Rohi:EgWbIbD27nNOQipJ@cluster0.eqsiiyv.mongodb.net/?retryWrites=true&w=majority";
+require('dotenv').config();
+const uri = process.env.MONGODB_URI;
 mongoose.connect(uri);
 const con = mongoose.connection;
 con.once("open", () => {
